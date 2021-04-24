@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+    font-size: 15px;
+}
+
+header {
+    box-shadow: 10px 10px 10px grey;
+    color: #e73131;
+    padding: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #e73131;
+    text-decoration: underline #e73131;
+}
+
+.menu {
+    margin: 0 20px;
+    font-size: 20px;
+}
+
+#home {
+    margin-left: 50%;
+}
+
+.align {
+    align-items: center;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+#presentation {
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    width: 35%;
+    margin: 100px 30px;
+}
+
+main {
+    width: 85%;
+    margin: auto;
+}
+
+#imageMarvel {
+    margin-top: 25px;
+}
+
+.articles {
+    margin: 20px auto;
+    width: 80%;
+    font-size: 50px;
+}
+
+.imageArticle {
+    width: 80%;
+}
+
+.imageArticle:hover {
+    opacity: 70%;
+}
+
+.colorWhite, .linkSocial {
+    color: white;
+}
+
+.size18 {
+    font-size: 18px;
+}
+
+footer {
+    background-color: #e73131;
+    padding: 20px;
+}
+
+.linkSocial {
+    font-size: 23px;
+    margin: 0 15px;
+}
+
+form {
+    width: 40%;
+    margin: 20vh auto;
+}
+
+label, input, textarea, .form-control, #connection {
+    font-size: 20px;
+}
+
+#connection {
+    margin: 20px auto;
+    background-color: #e73131;
+}
+
+.colorRed {
+    color: #e73131;
+}
