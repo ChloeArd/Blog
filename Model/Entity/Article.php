@@ -1,1 +1,90 @@
 <?php
+
+namespace Model\Entity;
+
+class Article {
+
+    private ?int $id;
+    private string $title;
+    private string $picture;
+    private string $content;
+    private User $user_fk;
+
+    public function __construct(string $title, string  $picture, string $content, User $user_fk, int $id= null) {
+        $this->id = $id;
+        $this->title = $title;
+        $this->picture = $picture;
+        $this->content = $content;
+        $this->user_fk = $user_fk;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int {
+        return $this->id;
+    }
+
+    /**
+     * @param int|null $id
+     */
+    public function setId(?int $id): void {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title): void {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPicture(): string {
+        return $this->picture;
+    }
+
+    /**
+     * @param string $picture
+     */
+    public function setPicture(string $picture): void {
+        $this->picture = $picture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent(): string {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     */
+    public function setContent(string $content): void {
+        $this->content = $content;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUserFk(): User {
+        return $this->user_fk;
+    }
+
+    /**
+     * @param User $user_fk
+     */
+    public function setUserFk(User $user_fk): void {
+        $this->user_fk = $user_fk;
+    }
+}

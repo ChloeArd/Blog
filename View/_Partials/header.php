@@ -16,11 +16,12 @@
     <header class="flexRow align">
         <h1>Marvel-Blog</h1>
         <a id="home" class="menu" href="../View/home.view.php">Accueil</a>
+        <a class="menu" href="../View/articles.view.php">Blog</a>
         <?php
         if (isset($_SESSION["id"])) {
         ?>
-            <a class="menu" href="../registration.php"><?= $_SESSION["username"]?></a>
-            <a class="menu colorRed" href="../../View/disconnection.php">Déconnexion</a>
+            <p class="menu" id="pseudo"><i class="fas fa-user-circle"></i><?= $_SESSION["pseudo"]?></p>
+            <a class="menu colorRed" href="../../assets/php/disconnection.php">Déconnexion</a>
         <?php
         }
         else {

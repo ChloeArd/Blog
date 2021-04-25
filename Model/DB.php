@@ -1,9 +1,10 @@
 <?php
 
-namespace MiniChat\Classes;
+namespace Blog\Classes;
 
 use PDO;
 use PDOException;
+
 class DB {
 
     private string $server = 'localhost';
