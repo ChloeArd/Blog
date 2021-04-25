@@ -18,7 +18,7 @@ class User {
      * @param int|null $id
      * @param int|null $role_fk
      */
-    public function __construct(string $pseudo = null, string $email = null, string $password = null, ?int $id = null, ?int $role_fk = null) {
+    public function __construct(?int $role_fk = null, string $pseudo = null, string $email = null, string $password = null, ?int $id = null) {
         $this->id = $id;
         $this->username = $pseudo;
         $this->email = $email;

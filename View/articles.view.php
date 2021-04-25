@@ -1,39 +1,24 @@
-<?php
-session_start();
-$title = "Articles";
-
-include '_Partials/header.php';
-?>
-
 <main>
     <div id="ArticleHome">
+        <?php
+        if (isset($var['articles'])) {
+            if ($_SESSION["role_fk"] === "1") {
+                ?>
+                <div id="divNew">
+                    <a class="colorWhite buttonChange" id="newArticle" href="?controller=articles&action=new">Nouveau <i class="fas fa-plus-circle"></i></a>
+                </div>
+            <?php
+            }
 
+            foreach ($var['articles'] as $article) { ?>
+                <a href="?controller=articles&id=<?= $article->getId() ?>" class="articles flexCenter flexColumn">
+                    <h2><?= $article->getTitle() ?></h2>
+                    <img class="imageArticle" src="<?= $article->getPicture() ?>" alt="<?= $article->getTitle() ?>">
+                </a>
         <?php
-        if ($_SESSION["role_fk"] === "1") {
-            ?>
-            <div id="divNew">
-                <a class="colorWhite buttonChange" id="newArticle" href="add.article.view.php">Nouveau <i class="fas fa-plus-circle"></i></a>
-            </div>
-        <?php
+            }
         }
         ?>
-
-
-        <a href="article.comment.view.php?" class="articles flexCenter flexColumn">
-            <h2>The Falcon and The Winter Soldier: The series.</h2>
-            <img class="imageArticle" src="https://tse4.mm.bing.net/th?id=OIP.V6V59mxOr1n8QrzCW7kRtwHaD7&pid=Api&P=0&w=313&h=166" alt="test">
-        </a>
-        <a href="articles.view.php?" class="articles flexCenter flexColumn">
-            <h2>The Falcon and The Winter Soldier: The series.</h2>
-            <img class="imageArticle" src="https://tse4.mm.bing.net/th?id=OIP.V6V59mxOr1n8QrzCW7kRtwHaD7&pid=Api&P=0&w=313&h=166" alt="test">
-        </a>
-        <a href="articles.view.php?" class="articles flexCenter flexColumn">
-            <h2>The Falcon and The Winter Soldier: The series.</h2>
-            <img class="imageArticle" src="https://tse4.mm.bing.net/th?id=OIP.V6V59mxOr1n8QrzCW7kRtwHaD7&pid=Api&P=0&w=313&h=166" alt="test">
-        </a>
     </div>
 </main>
 
-<?php
-
-include '_Partials/footer.php';

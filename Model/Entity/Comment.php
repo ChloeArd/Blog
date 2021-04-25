@@ -10,7 +10,7 @@
      private User $user_fk;
      private Article $article_fk;
 
-     public function __construct(string $title, string $content, string $date, User $user_fk, Article $article_fk, int $id= null) {
+     public function __construct(int $id= null, string $title, string $content, string $date, User $user_fk, Article $article_fk) {
          $this->id = $id;
          $this->title = $title;
          $this->content = $content;

@@ -5,16 +5,16 @@ namespace Model\Entity;
 class Article {
 
     private ?int $id;
-    private string $title;
-    private string $picture;
-    private string $content;
-    private User $user_fk;
+    private ?string $title;
+    private ?string $content;
+    private ?string $picture;
+    private ?User $user_fk;
 
-    public function __construct(string $title, string  $picture, string $content, User $user_fk, int $id= null) {
+    public function __construct(int $id= null, string $title = null, string $content = null,  string $picture = null, User $user_fk = null) {
         $this->id = $id;
         $this->title = $title;
-        $this->picture = $picture;
         $this->content = $content;
+        $this->picture = $picture;
         $this->user_fk = $user_fk;
     }
 
@@ -49,20 +49,6 @@ class Article {
     /**
      * @return string
      */
-    public function getPicture(): string {
-        return $this->picture;
-    }
-
-    /**
-     * @param string $picture
-     */
-    public function setPicture(string $picture): void {
-        $this->picture = $picture;
-    }
-
-    /**
-     * @return string
-     */
     public function getContent(): string {
         return $this->content;
     }
@@ -72,6 +58,20 @@ class Article {
      */
     public function setContent(string $content): void {
         $this->content = $content;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPicture(): string {
+        return $this->picture;
+    }
+
+    /**
+     * @param string $picture
+     */
+    public function setPicture(string $picture): void {
+        $this->picture = $picture;
     }
 
     /**

@@ -1,22 +1,25 @@
 <?php
 session_start();
-$title = "Accueil";
-
-include $_SERVER["DOCUMENT_ROOT"]. "/View/_Partials/header.php";
 
 require_once './Model/DB.php';
-//require_once './Model/Manager/Traits/ManagerTrait.php';
-//require_once './Controller/Traits/RenderViewTrait.php';
+require_once './Model/Manager/Traits/ManagerTrait.php';
+require_once './Controller/Traits/RenderViewTrait.php';
 
 require_once './Model/Entity/User.php';
 require_once './Model/Entity/Article.php';
+require_once './Model/Entity/Comment.php';
+require_once './Model/Entity/Role.php';
 
 require_once './Model/Manager/ArticleManager.php';
 require_once './Model/Manager/UserManager.php';
+require_once './Model/Manager/CommentManager.php';
 
 require_once './Controller/HomeController.php';
 require_once './Controller/ArticleController.php';
+require_once './Controller/CommentController.php';
+require_once './Controller/UserController.php';
 
+use Controller\CommentController;
 use Controller\HomeController;
 use Controller\ArticleController;
 
@@ -40,10 +43,13 @@ if(isset($_GET['controller'])) {
                         break;
                 }
             }
+            if (isset($_GET['id'])) {
+                $CommentController = new CommentController();
+                $controller->article($_POST);
+            }
             else {
                 $controller->articles();
             }
-
             break;
 
         default:
@@ -57,5 +63,3 @@ else {
     $controller = new HomeController();
     $controller->homePage();
 }
-
-include $_SERVER["DOCUMENT_ROOT"] . "/View/_Partials/footer.php";
