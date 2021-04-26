@@ -14,7 +14,7 @@ class ArticleController {
     use RenderViewTrait;
 
     /**
-     * display the list of article
+     * Display the list of article
      */
     public function articles() {
         $manager = new ArticleManager();
@@ -36,7 +36,8 @@ class ArticleController {
     }
 
     /**
-     * add a new article
+     * Add a new article
+     * @param $fields
      */
     public function addArticle($fields) {
         if(isset($fields['title'],$fields['content'], $fields['picture'], $fields['user_fk'])) {
@@ -58,6 +59,10 @@ class ArticleController {
         $this->render('add.article', 'Ajouter un article');
     }
 
+    /**
+     * Update a article
+     * @param $fields
+     */
     public function updateArticle($fields) {
         if (isset($fields['id'], $fields['title'], $fields['content'], $fields['picture'], $fields['user_fk'])) {
             $userManager = new UserManager();
@@ -77,5 +82,27 @@ class ArticleController {
         }
 
         $this->render('update.article', 'Modifier un article');
+    }
+
+    /**
+     * Delete a article
+     * @param $fields
+     */
+    public function deleteArticle($fields) {
+        if (isset($fields['id'], $fields['user_fk'])) {
+            $userManager = new UserManager();
+            $articleManager = new ArticleManager();
+
+            $id = intval($fields['id']);
+            $user_fk = intval($fields['user_fk']);
+
+            $user_fk = $userManager->getUser($user_fk);
+            if ($user_fk->getId()) {
+                $article = new Article($id);
+                $articleManager->delete($article);
+            }
+        }
+
+        $this->render('delete.article', 'Supprimer un article');
     }
 }

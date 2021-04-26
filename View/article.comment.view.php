@@ -10,7 +10,7 @@
                 if ($_SESSION["role_fk"] === "1") { ?>
                     <div id="divNew">
                         <a class="colorWhite buttonChange" id="modifyArticle" href="?controller=articles&id=<?= $item->getId() ?>&action=update">Modifier <i class="far fa-edit"></i></a>
-                        <a class="colorWhite buttonChange" id="deleteArticle" href="">Supprimer <i class="far fa-trash-alt"></i></a>
+                        <a class="colorWhite buttonChange" id="deleteArticle" href="?controller=articles&id=<?= $item->getId() ?>&action=delete">Supprimer <i class="far fa-trash-alt"></i></a>
                     </div>
             <?php
                 }

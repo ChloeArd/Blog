@@ -115,4 +115,10 @@ class ArticleManager {
 
         return $request->execute();
     }
+
+    public function delete (Article $article) {
+        $id = $article->getId();
+        $request = DB::getInstance()->prepare("DELETE FROM article WHERE id = $id");
+        return $request->execute();
+    }
 }
