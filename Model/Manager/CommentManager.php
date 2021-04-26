@@ -20,7 +20,7 @@ class CommentManager {
      */
     public function getCommentsArticle(int $article_fk): array {
         $comments = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM comment WHERE article_fk = $article_fk");
+        $request = DB::getInstance()->prepare("SELECT * FROM comment WHERE article_fk = $article_fk ORDER BY id DESC");
         $result = $request->execute();
         if($result) {
             $data = $request->fetchAll();

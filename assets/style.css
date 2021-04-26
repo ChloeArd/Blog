@@ -251,3 +251,112 @@ label, input, textarea, .form-control, #submit {
     position: relative;
     margin: auto;
 }
+
+#menuLink {
+    width: 70%;
+}
+
+#menuTitle {
+    width: 30%;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 1450px) {
+    #home {
+        margin-left: 30%;
+    }
+    #modifyArticle {
+        right: 30%;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    #home {
+        margin-left: 20%;
+    }
+    #presentation {
+        margin: 50px 30px;
+        width: 80%;
+    }
+    #modifyArticle {
+        right: 60%;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    #home {
+        margin-left: 10%;
+    }
+    .menu {
+        font-size: 18px;
+        margin: 0 12px;
+    }
+    main {
+        width: 100%;
+    }
+    #deleteComment {
+        right: 15%;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .menu {
+        font-size: 16px;
+        margin: 0 10px;
+    }
+    #titleSite {
+        font-size: 23px;
+    }
+    #presentation {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #menuTitle, #menuLink {
+        width: 100%;
+    }
+    header {
+        display: flex;
+        flex-direction: column;
+    }
+    #home {
+        margin: 0 10px;
+    }
+    #menuLink {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #titleSite {
+        font-size: 25px;
+        text-align: center;
+        margin: 20px;
+    }
+    #imageMarvel {
+        display: none;
+    }
+    #presentation {
+        color: #0f80cf;
+        position: relative;
+        font-size: 40px;
+        width: 80%;
+    }
+    #homeArticle {
+        width: 95%;
+    }
+    .buttonChange {
+        font-size: 15px;
+    }
+    .commentArticle > p {
+        font-size: 30px;
+    }
+
+}

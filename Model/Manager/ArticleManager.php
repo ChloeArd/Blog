@@ -38,7 +38,7 @@ class ArticleManager {
     }
 
     /**
-     * Return a user based on id.
+     * Return a article based on id.
      * @param $id
      * @return Article
      */
