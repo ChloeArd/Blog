@@ -2,15 +2,16 @@
 
  namespace Model\Entity;
 
- class Comment {
+ class Comment extends \Model\Entity\Article
+ {
      private ?int $id;
-     private string $title;
-     private string $content;
-     private string $date;
-     private User $user_fk;
-     private Article $article_fk;
+     private ?string $title;
+     private ?string $content;
+     private ?string $date;
+     private ?User $user_fk;
+     private ?Article $article_fk;
 
-     public function __construct(int $id= null, string $title, string $content, string $date, User $user_fk, Article $article_fk) {
+     public function __construct(int $id= null, string $title = null, string $content = null, string $date = null, User $user_fk = null, Article $article_fk = null) {
          $this->id = $id;
          $this->title = $title;
          $this->content = $content;
@@ -43,8 +44,9 @@
      /**
       * @param string $title
       */
-     public function setTitle(string $title): void {
+     public function setTitle(string $title): string {
          $this->title = $title;
+         return $title;
      }
 
      /**
@@ -57,8 +59,9 @@
      /**
       * @param string $content
       */
-     public function setContent(string $content): void {
+     public function setContent(string $content): string {
          $this->content = $content;
+         return $content;
      }
 
      /**

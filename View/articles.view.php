@@ -12,7 +12,7 @@
                 }
             }
             foreach ($var['articles'] as $article) { ?>
-                <a href="?controller=articles&id=<?= $article->getId() ?>" class="articles flexCenter flexColumn">
+                <a href="?controller=articles&id=<?= $article->getId()?>&controller2=comments" class="articles flexCenter flexColumn">
                     <h2><?= $article->getTitle() ?></h2>
                     <img class="imageArticle" src="<?= $article->getPicture() ?>" alt="<?= $article->getTitle() ?>">
                 </a>

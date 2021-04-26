@@ -14,14 +14,13 @@ class CommentManager {
 
     use ManagerTrait;
 
-
     /**
-     * Return all comments
+     * @param int $id
      * @return array
      */
-    public function getAll(): array {
+    public function getCommentsArticle(int $article_fk): array {
         $comments = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM comment");
+        $request = DB::getInstance()->prepare("SELECT * FROM comment WHERE article_fk = $article_fk");
         $result = $request->execute();
         if($result) {
             $data = $request->fetchAll();
@@ -30,7 +29,7 @@ class CommentManager {
                 $article = ArticleManager::getManager()->getArticle($comment_data['article_fk']);
                 if($user->getId()) {
                     if ($article->getId()) {
-                        $comments[] = new Comment($comment_data['id'], $comment_data['title'],  $comment_data['content'], $comment_data['date'], $user, $article);
+                        $comments[] = new Comment($comment_data['id'], $comment_data['title'], $comment_data['content'], $comment_data['date'], $user, $article);
                     }
                 }
             }
@@ -39,44 +38,70 @@ class CommentManager {
     }
 
     /**
-     * Return a user based on id.
      * @param int $id
-     * @return Comment
+     * @return array
      */
-    public function getComment(int $id): Comment {
-        $request = DB::getInstance()->prepare("SELECT * FROM comment WHERE article_fk = :id");
-        $request->bindValue(':id', $id);
-        $request->execute();
-        $comment_data = $request->fetch();
-        $comment = new Comment();
-        if ($comment_data) {
-            $comment->setId($comment_data['id']);
-            $comment->setTitle($comment_data['title']);
-            $comment->setContent($comment_data['content']);
-            $comment->setDate($comment_data['date']);
-            $comment->setUserFk($comment_data['user_fk']);
-            $comment->setArticleFk($comment_data['article_fk']);
+    public function getCommentArticle(int $id): array {
+        $comments = [];
+        $request = DB::getInstance()->prepare("SELECT * FROM comment WHERE id = $id");
+        $result = $request->execute();
+        if($result) {
+            $data = $request->fetchAll();
+            foreach ($data as $comment_data) {
+                $user = UserManager::getManager()->getUser($comment_data['user_fk']);
+                $article = ArticleManager::getManager()->getArticle($comment_data['article_fk']);
+                if($user->getId()) {
+                    if ($article->getId()) {
+                        $comments[] = new Comment($comment_data['id'], $comment_data['title'], $comment_data['content'], $comment_data['date'], $user, $article);
+                    }
+                }
+            }
         }
-        return $comment;
+        return $comments;
     }
 
     /**
-     * Add an comment into the database.
+     * Add an article into the database.
      * @param Comment $comment
      * @return bool
      */
-    public function add(Comment $comment) {
+    public function add(Comment $comment): bool {
         $request = DB::getInstance()->prepare("
-            INSERT INTO comment (null, title, content, date, user_fk, article_fk)
-                VALUES (null, :title, :content, :date, :ufk, artfk) 
+            INSERT INTO content (title, content, date, user_fk, article_fk)
+                VALUES (:title, :content, :date, :user_fk, :article_fk) 
         ");
 
         $request->bindValue(':title', $comment->getTitle());
         $request->bindValue(':content', $comment->getContent());
         $request->bindValue(':date', $comment->getDate());
-        $request->bindValue(':ufk', $comment->getUserFk()->getId());
-        $request->bindValue(':artfk', $comment->getArticleFk()->getId());
+        $request->bindValue(':user_fk', $comment->getUserFk()->getId());
+        $request->bindValue(':article_fk', $comment->getArticleFk()->getId());
 
         return $request->execute() && DB::getInstance()->lastInsertId() != 0;
+    }
+
+    /**
+     * @param Comment $comment
+     * @return bool
+     */
+    public function update (Comment $comment): bool {
+        $request = DB::getInstance()->prepare("UPDATE comment SET title = :title, content = :content, date = :date WHERE id = :id");
+
+        $request->bindValue(':id', $comment->getId());
+        $request->bindValue(':title', $comment->setTitle($comment->getTitle()));
+        $request->bindValue(':content', $comment->setContent($comment->getContent()));
+        $request->bindValue(':date', $comment->getDate());
+
+        return $request->execute();
+    }
+
+    /**
+     * @param Comment $comment
+     * @return bool
+     */
+    public function delete (Comment $comment): bool {
+        $id = $comment->getId();
+        $request = DB::getInstance()->prepare("DELETE FROM comment WHERE id = $id");
+        return $request->execute();
     }
 }

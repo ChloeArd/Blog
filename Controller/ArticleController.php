@@ -25,6 +25,10 @@ class ArticleController {
         ]);
     }
 
+    /**
+     * @param $id
+     * @return Article
+     */
     public function article($id): Article {
         $manager = new ArticleManager();
         $articles = $manager->getArticle($id);

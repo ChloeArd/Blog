@@ -191,6 +191,7 @@ label, input, textarea, .form-control, #submit {
 
 #content {
     margin: 30px auto;
+    width: 80%;
 }
 
 .horizontalLine {
@@ -199,7 +200,7 @@ label, input, textarea, .form-control, #submit {
     width: 60%;
 }
 
-#formComment, #comments {
+#comments {
     margin: 10px auto;
 }
 
@@ -244,4 +245,9 @@ label, input, textarea, .form-control, #submit {
 
 #deleteComment {
     right: 18%;
+}
+
+#addComment {
+    position: relative;
+    margin: auto;
 }

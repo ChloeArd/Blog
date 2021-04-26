@@ -87,7 +87,7 @@ class ArticleManager {
      * @param Article $article
      * @return bool
      */
-    public function add(Article $article) {
+    public function add(Article $article): bool {
         $request = DB::getInstance()->prepare("
             INSERT INTO article (title, content, picture, user_fk)
                 VALUES (:title, :content, :picture, :user_fk) 
@@ -105,13 +105,13 @@ class ArticleManager {
      * @param Article $article
      * @return bool
      */
-    public function update (Article $article) {
+    public function update (Article $article): bool {
         $request = DB::getInstance()->prepare("UPDATE article SET title = :title, content = :content, picture = :picture WHERE id = :id");
 
         $request->bindValue(':id', $article->getId());
         $request->bindValue(':title', $article->setTitle($article->getTitle()));
-        $request->bindValue(':content', $article->setTitle($article->getContent()));
-        $request->bindValue(':picture', $article->setTitle($article->getPicture()));
+        $request->bindValue(':content', $article->setContent($article->getContent()));
+        $request->bindValue(':picture', $article->setPicture($article->getPicture()));
 
         return $request->execute();
     }

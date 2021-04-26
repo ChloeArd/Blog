@@ -7,7 +7,7 @@ foreach ($article as $item) {
     ?>
     <main>
         <form class="width_80 flexColumn" method="post" action="">
-            <h1 class="colorRed">Voulez vous vraiment supprimer l'article "<?=$item->getTitle() ?>"</h1>
+            <h1 class="colorRed">Voulez vous vraiment supprimer l'article "<?=$item->getTitle() ?>" ?</h1>
             <img src="<?=$item->getPicture() ?>" alt="<?=$item->getTitle() ?>">
             <input type="hidden" name="user_fk" value="<?=$_SESSION['id'] ?>">
             <input type="hidden" name="id" value="<?=$item->getId()?>">

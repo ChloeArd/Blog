@@ -25,13 +25,12 @@ use Controller\ArticleController;
 
 // Soit l'url contient le paramètre controller ( $_GET['controller'] => http://localhost?controller=MonSuperController.
 if(isset($_GET['controller'])) {
-
-    // Alors, l'utilisateur demande une action à effectuer.
     switch($_GET['controller']) {
 
         // Affichage de tous les articles.
         case 'articles': // ex: http://localhost?controller=articles
             $controller = new ArticleController();
+            $commentController = new CommentController();
 
             // Pour l'ajout / l'édition / la suppression, on va checker un paramètre 'action' => http://localhost?controller=articles&action=new
             if(isset($_GET['action'])) {
@@ -45,14 +44,31 @@ if(isset($_GET['controller'])) {
                     case 'delete' :
                         $controller->deleteArticle($_POST);
                         break;
+                    case 'newComment' :
+                        $commentController->addComment($_POST);
+                        break;
+                    case 'updateComment' :
+                        $commentController->updateComment($_POST);
+                        break;
+                    case 'deleteComment' :
+                        $commentController->deleteComment($_POST);
+                        break;
                     default:
                         break;
                 }
             }
             if (isset($_GET['id'])) {
-                $CommentController = new CommentController();
                 $controller->article($_GET["id"]);
+            }
 
+            if (isset($_GET['controller2'])) {
+                switch ($_GET['controller2']) {
+                    case 'comments' :
+                        $commentController->commentsArticle($_GET['id']);
+                        break;
+                    default:
+                        break;
+                }
             }
             else {
                 $controller->articles();

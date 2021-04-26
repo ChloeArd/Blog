@@ -57,8 +57,9 @@ class Article {
     /**
      * @param string $content
      */
-    public function setContent(string $content): void {
+    public function setContent(string $content): string {
         $this->content = $content;
+        return $content;
     }
 
     /**
@@ -71,8 +72,9 @@ class Article {
     /**
      * @param string $picture
      */
-    public function setPicture(string $picture): void {
+    public function setPicture(string $picture): string {
         $this->picture = $picture;
+        return $picture;
     }
 
     /**
