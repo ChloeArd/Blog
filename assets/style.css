@@ -355,8 +355,9 @@ header {
     .buttonChange {
         font-size: 15px;
     }
-    .commentArticle > p {
-        font-size: 30px;
+    #content {
+        font-size: 20px;
+        width: 100%;
     }
 
 }
