@@ -67,7 +67,7 @@ class CommentManager {
      */
     public function add(Comment $comment): bool {
         $request = DB::getInstance()->prepare("
-            INSERT INTO content (title, content, date, user_fk, article_fk)
+            INSERT INTO comment (title, content, date, user_fk, article_fk)
                 VALUES (:title, :content, :date, :user_fk, :article_fk) 
         ");
 

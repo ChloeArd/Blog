@@ -2,8 +2,7 @@
 
  namespace Model\Entity;
 
- class Comment extends \Model\Entity\Article
- {
+ class Comment {
      private ?int $id;
      private ?string $title;
      private ?string $content;

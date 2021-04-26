@@ -38,6 +38,7 @@ class CommentController {
 
     /**
      * add a new comment
+     * @param $fields
      */
     public function addComment($fields){
         if(isset($fields['title'],$fields['content'], $fields['date'], $fields['user_fk'], $fields['article_fk'])) {

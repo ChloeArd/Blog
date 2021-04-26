@@ -7,7 +7,7 @@ $id = $_GET['id'];
             <label for="title" class="form-label">Titre du commentaire</label>
             <input type="text" class="form-control" id="title" name="title" required>
             <label for="comment" class="form-label">Commentaire</label>
-            <textarea id="comment" class="form-control" name="comment" required></textarea>
+            <textarea id="comment" class="form-control" name="content" required></textarea>
             <input hidden name="date"  type="text" id="inputDate" value="<?= date('Y-m-d H:i:s')?>">
             <input hidden name="user_fk"  type="text" id="user_fk" value="<?= $_SESSION['id']?>">
             <input hidden name="article_fk" type="text" id="article_fk" value="<?= $id ?>">
