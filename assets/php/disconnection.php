@@ -5,4 +5,4 @@ session_unset();
 // We destroy our session.
 session_destroy();
 
-header("Location: ../../View/home.view.php?success=1");
+header("Location: ../../index.php");

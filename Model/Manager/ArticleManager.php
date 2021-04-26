@@ -12,6 +12,12 @@ class ArticleManager {
 
     use ManagerTrait;
 
+    private UserManager $userManager;
+
+    public function __construct() {
+        $this->userManager = new UserManager();
+    }
+
     /**
      * Return all articles
      */
@@ -36,20 +42,44 @@ class ArticleManager {
      * @param $id
      * @return Article
      */
-    public function getArticle($id): Article {
-            $request = DB::getInstance()->prepare("SELECT * FROM article WHERE id = :id");
-            $request->bindValue(':id', $id);
-            $request->execute();
-            $article_data = $request->fetch();
-            $article = new Article();
-            if ($article_data) {
-                $article->setId($article_data['id']);
-                $article->setTitle($article_data['title']);
-                $article->setContent($article_data['content']);
-                $article->setPicture($article_data['picture']);
-                $article->setUserFk($article_data['user_fk']);
+    public function getArticle($id) {
+        $request = DB::getInstance()->prepare("SELECT * FROM article WHERE id = :id");
+        $request->bindValue(':id', $id);
+        $request->execute();
+        $article_data = $request->fetch();
+        $articles = new Article();
+        if ($article_data) {
+            $articles->setId($article_data['id']);
+            $articles->setTitle($article_data['title']);
+            $articles->setContent($article_data['content']);
+            $articles->setPicture($article_data['picture']);
+            $user = $this->userManager->getUser($article_data['user_fk']);
+            $articles->setUserFk($user);
+        }
+        return $articles;
+
+
+    }
+
+    /**
+     * @param int $id
+     * @return array
+     */
+    public function getArticle2(int $id): array {
+        $articles = [];
+        $request = DB::getInstance()->prepare("SELECT * FROM article WHERE id = :id");
+        $request->bindValue(':id', $id);
+        $result = $request->execute();
+        if($result) {
+            $data = $request->fetchAll();
+            foreach ($data as $article_data) {
+                $user = UserManager::getManager()->getUser($article_data['user_fk']);
+                if($user->getId()) {
+                    $articles[] = new Article($article_data['id'], $article_data['title'],  $article_data['content'], $article_data['picture'], $user);
+                }
             }
-        return $article;
+        }
+        return $articles;
     }
 
     /**
@@ -69,5 +99,20 @@ class ArticleManager {
         $request->bindValue(':user_fk', $article->getUserFk()->getId());
 
         return $request->execute() && DB::getInstance()->lastInsertId() != 0;
+    }
+
+    /**
+     * @param Article $article
+     * @return bool
+     */
+    public function update (Article $article) {
+        $request = DB::getInstance()->prepare("UPDATE article SET title = :title, content = :content, picture = :picture WHERE id = :id");
+
+        $request->bindValue(':id', $article->getId());
+        $request->bindValue(':title', $article->setTitle($article->getTitle()));
+        $request->bindValue(':content', $article->setTitle($article->getContent()));
+        $request->bindValue(':picture', $article->setTitle($article->getPicture()));
+
+        return $request->execute();
     }
 }

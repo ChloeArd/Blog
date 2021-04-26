@@ -36,7 +36,7 @@ if (isset($_POST["pseudo"], $_POST["email"], $_POST["password"])) {
                 $sql = "INSERT INTO user VALUES (null, '$pseudo', '$email', '$encryptedPassword', 2)";
 
                 $bdd->exec($sql);
-                header("Location: ../../View/connection.php?success=0");
+                header("Location: ../../index.php");
             }
             else {
                 header("Location: ../../View/registration.php?error=5");

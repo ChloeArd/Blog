@@ -1,6 +1,6 @@
 <?php
 
-use Blog\Classes\DB;
+use Model\DB;
 
 include "functions.php";
 require "../../Model/DB.php";
@@ -27,7 +27,7 @@ if (isset($_POST["email"], $_POST["password"])) {
             $_SESSION['email'] = $email;
             $_SESSION['role_fk'] = $user['role_fk'];
 
-            header("Location: ../../View/home.view.php?success=0");
+            header("Location: ../../index.php");
         }
         else {
             header("Location: ../../View/connection.php?error=2");

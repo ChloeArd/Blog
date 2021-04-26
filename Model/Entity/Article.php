@@ -42,8 +42,9 @@ class Article {
     /**
      * @param string $title
      */
-    public function setTitle(string $title): void {
+    public function setTitle(string $title): string {
         $this->title = $title;
+        return $title;
     }
 
     /**

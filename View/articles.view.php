@@ -2,14 +2,15 @@
     <div id="ArticleHome">
         <?php
         if (isset($var['articles'])) {
-            if ($_SESSION["role_fk"] === "1") {
+            if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
+                if ($_SESSION["role_fk"] === "1") {
                 ?>
-                <div id="divNew">
-                    <a class="colorWhite buttonChange" id="newArticle" href="?controller=articles&action=new">Nouveau <i class="fas fa-plus-circle"></i></a>
-                </div>
-            <?php
+                    <div id="divNew">
+                        <a class="colorWhite buttonChange" id="newArticle" href="?controller=articles&action=new">Nouveau <i class="fas fa-plus-circle"></i></a>
+                    </div>
+                <?php
+                }
             }
-
             foreach ($var['articles'] as $article) { ?>
                 <a href="?controller=articles&id=<?= $article->getId() ?>" class="articles flexCenter flexColumn">
                     <h2><?= $article->getTitle() ?></h2>

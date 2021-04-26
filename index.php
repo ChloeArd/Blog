@@ -39,13 +39,17 @@ if(isset($_GET['controller'])) {
                     case 'new' :
                         $controller->addArticle($_POST);
                         break;
+                    case 'update' :
+                        $controller->updateArticle($_POST);
+                        break;
                     default:
                         break;
                 }
             }
             if (isset($_GET['id'])) {
                 $CommentController = new CommentController();
-                $controller->article($_POST);
+                $controller->article($_GET["id"]);
+
             }
             else {
                 $controller->articles();
