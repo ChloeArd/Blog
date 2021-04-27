@@ -73,7 +73,6 @@ if(isset($_GET['controller'])) {
             break;
 
         default:
-            // Éventuellement, afficher une page 404 not found. Car le controller n'existe pas !
             break;
     }
 }
