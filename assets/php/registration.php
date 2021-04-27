@@ -1,6 +1,6 @@
 <?php
 
-use Blog\Classes\DB;
+use Model\DB;
 
 include "functions.php";
 require "../../Model/DB.php";
@@ -33,10 +33,11 @@ if (isset($_POST["pseudo"], $_POST["email"], $_POST["password"])) {
             $number = preg_match('@[0-9]@', $password);
 
             if($maj && $min && $number && strlen($password) > 8) {
+                // People who register automatically have role 2: user.
                 $sql = "INSERT INTO user VALUES (null, '$pseudo', '$email', '$encryptedPassword', 2)";
 
                 $bdd->exec($sql);
-                header("Location: ../../index.php");
+                header("Location: ../../View/connection.php");
             }
             else {
                 header("Location: ../../View/registration.php?error=5");

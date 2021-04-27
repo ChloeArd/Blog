@@ -1,5 +1,6 @@
 <?php
 $id = $_GET['id'];
+date_default_timezone_set("Europe/Paris");
 ?>
 <main>
         <form class="width_80" action="" method="post">
