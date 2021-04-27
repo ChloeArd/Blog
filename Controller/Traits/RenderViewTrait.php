@@ -8,6 +8,6 @@ trait RenderViewTrait {
         ob_start();
         require_once $_SERVER['DOCUMENT_ROOT'] . "/View/$view.view.php";
         $html = ob_get_clean();
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/View/_partials/base.view.php';
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/View/_Partials/base.view.php';
     }
 }
