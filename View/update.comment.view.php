@@ -5,6 +5,7 @@ $comment = $manager->getCommentArticle($id);
 foreach ($comment as $item) {
     ?>
     <main>
+        <a id="previous" href="?controller=articles&id=<?= $item->getArticleFk()->getId()?>&controller2=comments"><i class="fas fa-arrow-left"></i>Retour</a>
         <form class="width_80" method="post" action="">
             <h1 class="colorRed">Modifier un commentaire</h1>
             <label for="title" class="form-label">Titre du commentaire</label>

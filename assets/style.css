@@ -267,6 +267,23 @@ header {
     justify-content: center;
 }
 
+#previous {
+    border: 1px solid #0f80cf;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px grey;
+    color: #0f80cf;
+    position: absolute;
+    top: 18%;
+    left: 15%;
+}
+
+#previous:hover {
+    background-color: #0f80cf;
+    color: white;
+    text-decoration: none;
+}
+
 
 @media screen and (max-width: 1450px) {
     #home {

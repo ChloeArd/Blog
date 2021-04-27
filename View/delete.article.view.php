@@ -6,6 +6,7 @@ $article = $manager->getArticle2($id);
 foreach ($article as $item) {
     ?>
     <main>
+        <a id="previous" href="?controller=articles&id=<?= $id?>&controller2=comments"><i class="fas fa-arrow-left"></i>Retour</a>
         <form class="width_80 flexColumn" method="post" action="">
             <h1 class="colorRed">Voulez vous vraiment supprimer l'article "<?=$item->getTitle() ?>" ?</h1>
             <img src="<?=$item->getPicture() ?>" alt="<?=$item->getTitle() ?>">

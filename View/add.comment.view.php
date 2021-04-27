@@ -3,7 +3,8 @@ $id = $_GET['id'];
 date_default_timezone_set("Europe/Paris");
 ?>
 <main>
-        <form class="width_80" action="" method="post">
+    <a id="previous" href="?controller=articles&id=<?= $id?>&controller2=comments"><i class="fas fa-arrow-left"></i>Retour</a>
+    <form class="width_80" action="" method="post">
             <h2 class="colorRed">Poster un commentaire</h2>
             <label for="title" class="form-label">Titre du commentaire</label>
             <input type="text" class="form-control" id="title" name="title" required>

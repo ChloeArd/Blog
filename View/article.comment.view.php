@@ -1,4 +1,5 @@
 <main>
+    <a id="previous" href="?controller=articles"><i class="fas fa-arrow-left"></i>Retour</a>
     <?php
     if (isset($var['articles'])) {
         $id = $_GET['id'];
