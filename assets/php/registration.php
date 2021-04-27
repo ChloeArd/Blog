@@ -24,7 +24,7 @@ if (isset($_POST["pseudo"], $_POST["email"], $_POST["password"])) {
             $pseudoUse = $user['pseudo'];
 
             if ($mailUse === $email || $pseudoUse === $pseudo) {
-                echo "error=0";
+                header("Location: ../../View/registration.php?error=0");
             }
         }
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -37,7 +37,7 @@ if (isset($_POST["pseudo"], $_POST["email"], $_POST["password"])) {
                 $sql = "INSERT INTO user VALUES (null, '$pseudo', '$email', '$encryptedPassword', 2)";
 
                 $bdd->exec($sql);
-                header("Location: ../../View/connection.php");
+                header("Location: ../../View/connection.php?success=0");
             }
             else {
                 header("Location: ../../View/registration.php?error=5");

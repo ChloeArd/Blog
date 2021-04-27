@@ -152,7 +152,7 @@ label, input, textarea, .form-control, #submit {
 }
 
 #article > h1 {
-    margin: 30px auto;
+    margin: 60px auto;
 }
 
 .titleImage {
@@ -284,6 +284,45 @@ header {
     text-decoration: none;
 }
 
+.password {
+    font-size: 12px;
+}
+
+.modal2, #closeModal {
+    position: absolute;
+    z-index: 9999;
+}
+
+.modal2 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    font-size: 22px;
+    text-align: center;
+    color: white;
+}
+
+#closeModal {
+    top: 2px;
+    right: 30px;
+    border: none;
+    background-color: grey;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    font-size: 15px;
+    display: none;
+}
+
+#success {
+    background-color: lightgreen;
+}
+
+#error {
+    background-color: red;
+}
+
 
 @media screen and (max-width: 1450px) {
     #home {
@@ -305,11 +344,17 @@ header {
     #modifyArticle {
         right: 60%;
     }
+    #previous {
+        left: 5%;
+    }
 }
 
 @media screen and (max-width: 930px) {
-    #home {
-        margin-left: 10%;
+    #menuTitle {
+        width: 40%;
+    }
+    #menuLink {
+        width: 60%;
     }
     .menu {
         font-size: 18px;
@@ -333,6 +378,12 @@ header {
     }
     #presentation {
         font-size: 25px;
+    }
+    #previous {
+        top: 16%;
+    }
+    #divNew {
+        margin-top: 70px;
     }
 }
 
@@ -376,5 +427,7 @@ header {
         font-size: 20px;
         width: 100%;
     }
-
+    #previous {
+        top: 23%;
+    }
 }
