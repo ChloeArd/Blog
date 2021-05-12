@@ -105,6 +105,7 @@ main {
 footer {
     background-color: #e73131;
     padding: 20px;
+    width: 100%;
 }
 
 .linkSocial {

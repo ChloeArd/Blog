@@ -57,7 +57,6 @@ if(isset($_GET['controller'])) {
             if (isset($_GET['id'])) {
                 $controller->article($_GET["id"]);
             }
-
             if (isset($_GET['controller2'])) {
                 switch ($_GET['controller2']) {
                     case 'comments' :

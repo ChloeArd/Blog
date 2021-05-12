@@ -57,8 +57,6 @@ class ArticleManager {
             $articles->setUserFk($user);
         }
         return $articles;
-
-
     }
 
     /**
@@ -118,7 +116,8 @@ class ArticleManager {
 
     public function delete (Article $article) {
         $id = $article->getId();
-        $request = DB::getInstance()->prepare("DELETE FROM article WHERE id = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM article WHERE id = :id");
+        $request->bindParam("id", $id);
         return $request->execute();
     }
 }

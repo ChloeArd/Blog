@@ -13,28 +13,28 @@
 </head>
 <body>
 
-<header>
-    <div id="menuTitle">
-        <h1 id="titleSite">Marvel-Blog</h1>
-    </div>
+    <header>
+        <div id="menuTitle">
+            <h1 id="titleSite">Marvel-Blog</h1>
+        </div>
 
-    <div id="menuLink" class="flexRow">
-        <a id="home" class="menu" href="../../index.php"><i class="fas fa-home"></i></a>
-        <a class="menu" href="../../index.php?controller=articles"><i class="far fa-newspaper"></i></a>
-        <?php
-        if (isset($_SESSION["id"])) {
-            ?>
-            <p class="menu" id="pseudo"><i class="fas fa-user-circle"></i><?= $_SESSION["pseudo"]?></p>
-            <a class="menu colorRed" href="../../assets/php/disconnection.php"><i class="fas fa-sign-out-alt"></i></a>
+        <div id="menuLink" class="flexRow">
+            <a id="home" class="menu" href="../../index.php"><i class="fas fa-home"></i></a>
+            <a class="menu" href="../../index.php?controller=articles"><i class="far fa-newspaper"></i></a>
             <?php
-        }
-        else {
+            if (isset($_SESSION["id"])) {
+                ?>
+                <p class="menu" id="pseudo"><i class="fas fa-user-circle"></i><?= $_SESSION["pseudo"]?></p>
+                <a class="menu colorRed" href="../../assets/php/disconnection.php"><i class="fas fa-sign-out-alt"></i></a>
+                <?php
+            }
+            else {
+                ?>
+                <a class="menu" href="../../View/connection.php">Connexion</a>
+                <a class="menu" href="../../View/registration.php">Inscription</a>
+                <?php
+            }
             ?>
-            <a class="menu" href="../../View/connection.php">Connexion</a>
-            <a class="menu" href="../../View/registration.php">Inscription</a>
-            <?php
-        }
-        ?>
-    </div>
+        </div>
 
-</header>
+    </header>
